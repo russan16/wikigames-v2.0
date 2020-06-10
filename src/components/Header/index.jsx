@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaSearch, FaGamepad} from 'react-icons/fa';
 import imgHeader from '../../assets/images/header.jpg';
 
-export default function Header(props) {
+export default function Header() {
+
     const menu = [
         {
             title: "Home",
@@ -49,7 +50,7 @@ export default function Header(props) {
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
                         <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
-                            <FaSearch /> Buscar
+                            <FaSearch/> Buscar
                         </button>
                     </form>
                 </div>
@@ -57,7 +58,7 @@ export default function Header(props) {
 
             <header className="row">
                 <figure className="p-0">
-                    <img className="img-fluid" src={imgHeader} alt="Imagem principal"/>
+                    <img className="img-fluid" src={imgHeader} alt="Wiki Games"/>
                 </figure>
             </header>
         </>
