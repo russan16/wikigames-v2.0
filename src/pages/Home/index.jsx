@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import GameList from '../../components/GameList';
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 
 export default function Home() {
 
@@ -23,10 +22,18 @@ export default function Home() {
                     <GameList key={index} games={card}/>
                 ))}
             </div>
-            <div className="w-100 mt-4 d-flex flex-row justify-content-center">
-                <button onClick={() => setPage(page - 1)} className="btn btn-secondary mr-3" disabled={page <= 1}><FaChevronLeft/> Anterior</button>
-                <button onClick={() => setPage(page + 1)} className="btn btn-secondary">Próxima <FaChevronRight/></button>
-            </div>
+
+            <nav aria-label="Page navigation" className="mt-5 w-100">
+                <ul className="pagination justify-content-center pagination-lg">
+                    <li className={`page-item ${page <= 1 ? 'disabled':''}`}><button onClick={() => setPage(page - 1)} className="page-link">Anterior</button></li>
+                    <li className="page-item"><button className="page-link" onClick={()=> setPage(1)}>1</button></li>
+                    <li className="page-item"><button className="page-link" onClick={()=> setPage(2)}>2</button></li>
+                    <li className="page-item"><button className="page-link" onClick={()=> setPage(3)}>3</button></li>
+                    <li className="page-item"><button className="page-link" onClick={()=> setPage(4)}>4</button></li>
+                    <li className="page-item"><button className="page-link" onClick={()=> setPage(5)}>5</button></li>
+                    <li className={`page-item ${page === 5 ? 'disabled':''}`}><button onClick={() => setPage(page + 1)} className="page-link">Próxima</button></li>
+                </ul>
+            </nav>
         </section>
     );
 }
