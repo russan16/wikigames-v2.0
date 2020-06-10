@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './games-list.scss';
 import {dateFormat} from '../../components/Conversion';
 
@@ -18,19 +19,19 @@ export default function GameList(props) {
                             <p className="card-text">Nota: {data.rating}/5.0</p>
                             <p className="card-text">Gênero:
                                 {data.genres.map((item, i) => (
-                                    <a key={i} href={`/genero/${item.slug}`} className="mx-1 badge badge-secondary">{item.name}</a>
+                                    <Link key={i} to={`/genero/${item.slug}`} className="mx-1 badge badge-secondary">{item.name}</Link>
                                 ))}
                             </p>
                             <p className="card-text">Plataforma:
                                 {data.platforms.map((item, i) => (
-                                    <a key={i} href={`/plataforma/${item.platform.slug}`} className="mx-1 badge badge-secondary">{item.platform.name}</a>
+                                    <Link key={i} to={`/plataforma/${item.platform.slug}`} className="mx-1 badge badge-secondary">{item.platform.name}</Link>
                                 ))}
                             </p>
                             <p className="card-text">
                                 Lançamento: {dateFormat(data.released)}
                             </p>
                         </div>
-                        <a href={`/game/${data.slug}`} className="btn btn-primary btn-block">Ver mais</a>
+                        <Link to={`/game/${data.slug}`} className="btn btn-primary btn-block">Ver mais</Link>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,6 @@ export default function Home() {
         api.get(`games?dates=2019-01-01,2019-12-31&ordering=-added&page=${page}`).then(result => {
             setGames(result.data.results);
         });
-        console.log('page');
         document.querySelector('html,body').scrollTop = 0;
     }, [page]);
 

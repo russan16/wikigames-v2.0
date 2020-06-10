@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from 'react-router-dom';
 import {FaSearch, FaGamepad} from 'react-icons/fa';
 import imgHeader from '../../assets/images/header.jpg';
 
@@ -33,7 +34,7 @@ export default function Header() {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark">
-                <a className="navbar-brand" href="/" title="Wiki Games"><FaGamepad size={40}/></a>
+                <Link className="navbar-brand" to="/" title="Wiki Games"><FaGamepad size={40}/></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -43,7 +44,7 @@ export default function Header() {
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         {menu.map((item, index) => (
                             <li onClick={() => currentPage(item.url)} key={index} className={`nav-item ${btnSelected === item.url ? 'active' : ''}`}>
-                                <a className="nav-link" href={item.url}>{item.title}</a>
+                                <Link className="nav-link" to={item.url}>{item.title}</Link>
                             </li>
                         ))}
                     </ul>
