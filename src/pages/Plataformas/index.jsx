@@ -2,13 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {numericFormat} from '../../components/Conversion';
 import MiniCard from '../../components/MiniCard';
 import api from '../../services/api';
+import Loading from "../../components/Loading";
 
 export default function Plataformas() {
 
     const [platData, setPlatData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         api.get('/platforms').then((response) => {
             setPlatData(response.data);
+            setIsLoading(false);
         }).catch((e) => {
             console.log(e);
         });
@@ -23,6 +27,7 @@ export default function Plataformas() {
                     ))
                 ) : ('')}
             </div>
+            <Loading status={isLoading}/>
         </section>
     );
 }
