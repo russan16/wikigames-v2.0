@@ -6,6 +6,7 @@ import InternaGame from './pages/InternaGame';
 import Generos from './pages/Generos';
 import Desenvolvedores from './pages/Desenvolvedores';
 import Plataformas from './pages/Plataformas';
+import Busca from './pages/Busca';
 
 const Routes = () => (
     <BrowserRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
             <Route path="/generos" component={Generos}/>
             <Route path="/desenvolvedores" component={Desenvolvedores}/>
             <Route path="/plataformas" component={Plataformas}/>
+            <Route path="/busca/:busca" component={Busca}/>
         </Switch>
     </BrowserRouter>
 );

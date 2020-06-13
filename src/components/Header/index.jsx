@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FaSearch, FaGamepad} from 'react-icons/fa';
 import imgHeader from '../../assets/images/header.jpg';
 
 export default function Header() {
+
+    const history = useHistory();
 
     const menu = [
         {
@@ -27,6 +29,14 @@ export default function Header() {
 
     const [btnSelected, setBtnSelected] = useState('/');
 
+    const [search, setSearch] = useState('');
+
+    function doTheSearch() {
+        if (search !== '') {
+            history.push(`/busca/${search}`);
+        }
+    }
+
     function currentPage(url) {
         setBtnSelected(url);
     }
@@ -48,8 +58,10 @@ export default function Header() {
                             </li>
                         ))}
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
+                    <form onSubmit={() => doTheSearch()} className="form-inline my-2 my-lg-0">
+                        <input onChange={(e) => {
+                            setSearch(e.target.value)
+                        }} className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
                         <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
                             <FaSearch/> Buscar
                         </button>

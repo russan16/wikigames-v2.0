@@ -1,14 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import './loading.scss';
 
 export default function Loading(props) {
 
-    const [isLoading,setIsLoading] = useState(false);
-    useEffect(() => {
-        setIsLoading(props.loading);
-    },[]);
+    const isLoading = props.status;
+
     return (
         <>
-            <div className="spinner-border"></div>
+            {isLoading ? (
+                <div className="overlay">
+                    <div className="spinner"></div>
+                    <span className="loading-text">Loading...</span>
+                </div>
+            ) : ('')}
         </>
     );
 }

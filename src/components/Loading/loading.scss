@@ -1,0 +1,40 @@
+$bgloader: #000;
+$loaderdot: #fff;
+$textsize: 25px;
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: rgba(0,0,0,.7);
+}
+
+.spinner {
+  border: 8px solid $bgloader;
+  border-top-color: $loaderdot;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: $loaderdot;
+  font-size: 20px;
+  margin-top: 15px;
+  font-family: monospace;
+}

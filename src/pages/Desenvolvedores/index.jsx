@@ -2,13 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {numericFormat} from '../../components/Conversion';
 import MiniCard from '../../components/MiniCard';
 import api from '../../services/api';
+import Loading from '../../components/Loading';
 
 export default function Desenvolvedores() {
 
     const [devData, setDevData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         api.get('/developers').then((response) => {
             setDevData(response.data);
+            setIsLoading(false);
         }).catch((e) => {
             console.log(e);
         });
@@ -23,6 +27,7 @@ export default function Desenvolvedores() {
                     ))
                 ) : ('')}
             </div>
+            <Loading status={isLoading}/>
         </section>
     );
 }

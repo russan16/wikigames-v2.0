@@ -6,13 +6,22 @@ body {
   background-image: url('../images/background.jpg');
 }
 
-.custom-img-card-mini {
-  background-color: #000;
-  height: 140px;
+.mini-card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  font-size: 20px;
+}
+
+.mini-card-wrapper {
+  position: relative;
+  z-index: 1;
+  display: block;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 6px;
 
   & img {
     min-height: 100%;
@@ -23,6 +32,10 @@ body {
     transition: all 300ms ease;
   }
 
+  &:hover .mini-card-title {
+    background-color: rgba(0, 0, 0, .6);
+  }
+
   &:hover img {
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
@@ -30,4 +43,13 @@ body {
     -ms-transform: scale(1.2);
     transform: scale(1.2);
   }
+}
+
+.custom-img-card-mini {
+  background-color: #000;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

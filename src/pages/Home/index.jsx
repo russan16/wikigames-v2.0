@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import GameList from '../../components/GameList';
+import Loading from '../../components/Loading';
 
 export default function Home() {
 
     const [games, setGames] = useState([]);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        api.get(`games?dates=2019-01-01,2019-12-31&ordering=-added&page=${page}`).then(result => {
-            setGames(result.data.results);
+        setIsLoading(true);
+        api.get(`games?dates=2019-01-01,2019-12-31&ordering=-added&page=${page}`).then(response => {
+            setGames(response.data.results);
+            setIsLoading(false);
         });
         document.querySelector('html,body').scrollTop = 0;
     }, [page]);
@@ -25,15 +29,14 @@ export default function Home() {
 
             <nav aria-label="Page navigation" className="mt-5 w-100">
                 <ul className="pagination justify-content-center pagination-lg">
-                    <li className={`page-item ${page <= 1 ? 'disabled':''}`}><button onClick={() => setPage(page - 1)} className="page-link">Anterior</button></li>
-                    <li className="page-item"><button className="page-link" onClick={()=> setPage(1)}>1</button></li>
-                    <li className="page-item"><button className="page-link" onClick={()=> setPage(2)}>2</button></li>
-                    <li className="page-item"><button className="page-link" onClick={()=> setPage(3)}>3</button></li>
-                    <li className="page-item"><button className="page-link" onClick={()=> setPage(4)}>4</button></li>
-                    <li className="page-item"><button className="page-link" onClick={()=> setPage(5)}>5</button></li>
-                    <li className={`page-item ${page === 5 ? 'disabled':''}`}><button onClick={() => setPage(page + 1)} className="page-link">Próxima</button></li>
+                    <li className={`page-item ${page === 1 ? 'disabled':''}`}><button className="page-link" onClick={()=> setPage(1)}>1</button></li>
+                    <li className={`page-item ${page === 2 ? 'disabled':''}`}><button className="page-link" onClick={()=> setPage(2)}>2</button></li>
+                    <li className={`page-item ${page === 3 ? 'disabled':''}`}><button className="page-link" onClick={()=> setPage(3)}>3</button></li>
+                    <li className={`page-item ${page === 4 ? 'disabled':''}`}><button className="page-link" onClick={()=> setPage(4)}>4</button></li>
+                    <li className={`page-item ${page === 5 ? 'disabled':''}`}><button className="page-link" onClick={()=> setPage(5)}>5</button></li>
                 </ul>
             </nav>
+            <Loading status={isLoading}/>
         </section>
     );
 }

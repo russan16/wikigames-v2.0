@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import {dateFormat} from '../../components/Conversion';
+import Loading from '../../components/Loading';
 
 export default function InternaGame(props) {
 
     const [gameInfo, setGameInfo] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const slug = props.match.params.slug;
 
     useEffect(() => {
-        api.get(`/games/${props.match.params.slug}`).then((response) => {
+        api.get(`/games/${slug}`).then((response) => {
             setGameInfo(response.data);
+            setIsLoading(false);
         }).catch((error) => {
             console.log(error);
         });
@@ -25,6 +29,7 @@ export default function InternaGame(props) {
                 <li className="text-light">Último patch: {dateFormat(gameInfo.released)}</li>
                 <li className="text-light">Site oficial: <a className="text-light" href={gameInfo.website} target="_blank">{gameInfo.website}</a></li>
             </ul>
+            <Loading status={isLoading}/>
         </section>
     );
 }

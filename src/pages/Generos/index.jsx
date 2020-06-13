@@ -2,15 +2,18 @@ import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import MiniCard from '../../components/MiniCard';
 import './genres.scss';
+import Loading from '../../components/Loading';
 
 export default function Generos() {
 
     const [genreData, setGenreData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         api.get('/genres')
             .then((response) => {
                 setGenreData(response.data);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -27,6 +30,7 @@ export default function Generos() {
                     ))
                 ) : ('')}
             </div>
+            <Loading status={isLoading}/>
         </section>
     );
 }
