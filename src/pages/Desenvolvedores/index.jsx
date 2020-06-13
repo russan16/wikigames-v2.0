@@ -13,8 +13,9 @@ export default function Desenvolvedores() {
         api.get('/developers').then((response) => {
             setDevData(response.data);
             setIsLoading(false);
-        }).catch((e) => {
-            console.log(e);
+        }).catch(() => {
+            alert('Oops, aconteceu um erro, tente mais tarde.');
+            setIsLoading(false);
         });
     });
     return (

@@ -19,8 +19,10 @@ export default function Busca(props) {
             setFailed(false);
             if (busca.length === 0)
                 setFailed(true);
-        }).catch(e => {
-            console.log(e);
+        }).catch(() => {
+            alert('Oops, aconteceu um erro, tente mais tarde.');
+            setIsLoading(false);
+            setFailed(true);
         });
         document.querySelector('html,body').scrollTop = 0;
     }, [page, search]);

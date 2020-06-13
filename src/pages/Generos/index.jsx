@@ -15,8 +15,9 @@ export default function Generos() {
                 setGenreData(response.data);
                 setIsLoading(false);
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                alert('Oops, aconteceu um erro, tente mais tarde.');
+                setIsLoading(false);
             })
     }, []);
 

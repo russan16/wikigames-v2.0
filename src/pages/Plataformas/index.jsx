@@ -14,7 +14,8 @@ export default function Plataformas() {
             setPlatData(response.data);
             setIsLoading(false);
         }).catch((e) => {
-            console.log(e);
+            alert('Oops, aconteceu um erro, tente mais tarde.');
+            setIsLoading(false);
         });
     });
     return (
