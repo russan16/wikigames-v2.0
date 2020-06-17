@@ -21,14 +21,14 @@ export default function GameList(props) {
                             <p className="card-text">Gênero:
                                 {data.genres != '' ? (
                                     data.genres.map((item, i) => (
-                                        <Link key={i} to={`/genero/${item.slug}`} className="mx-1">{item.name}</Link>
+                                        <Link key={i} to={`/genero/${item.id}/${item.name}`} className="mx-1">{item.name}</Link>
                                     ))
                                 ) : (<span> N/D</span>)}
                             </p>
                             <p className="card-text">Plataforma:
                                 {data.platforms !== null ? (
                                     data.platforms.map((item, i) => (
-                                        <Link key={i} to={`/plataforma/${item.platform.slug}`} className="mx-1">{item.platform.name}</Link>
+                                        <Link key={i} to={`/plataforma/${item.platform.id}/${item.platform.name}`} className="mx-1">{item.platform.name}</Link>
                                     ))
                                 ) : (<span> N/D</span>)}
                             </p>
