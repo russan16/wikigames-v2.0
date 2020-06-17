@@ -17,7 +17,7 @@ export default function GameList(props) {
                     <div className="card-body d-flex flex-column justify-content-between">
                         <div className="mb-2">
                             <h5 className="card-title">{data.name}</h5>
-                            <p className="card-text">Nota: {data.rating}/5.0</p>
+                            <p className="card-text">Nota: {data.rating !== 0 ? data.rating : 'não avaliado'}</p>
                             <p className="card-text">Gênero:
                                 {data.genres != '' ? (
                                     data.genres.map((item, i) => (
