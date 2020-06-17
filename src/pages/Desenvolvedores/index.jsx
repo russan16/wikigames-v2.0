@@ -24,7 +24,7 @@ export default function Desenvolvedores() {
             <div className="row">
                 {devData.results !== undefined ? (
                     devData.results.map((item, i) => (
-                        <MiniCard key={i} data={item}/>
+                        <MiniCard key={i} page="desenvolvedor" data={item}/>
                     ))
                 ) : ('')}
             </div>

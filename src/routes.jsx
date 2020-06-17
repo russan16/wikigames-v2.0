@@ -3,6 +3,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import InternaGame from './pages/InternaGame';
+import InternaPlataformas from './pages/InternaPlataformas';
+import InternaDesenvolvedores from './pages/InternaDesenvolvedores';
+import InternaGeneros from './pages/InternaGeneros';
 import Generos from './pages/Generos';
 import Desenvolvedores from './pages/Desenvolvedores';
 import Plataformas from './pages/Plataformas';
@@ -17,6 +20,9 @@ const Routes = () => (
             <Route path="/generos" component={Generos}/>
             <Route path="/desenvolvedores" component={Desenvolvedores}/>
             <Route path="/plataformas" component={Plataformas}/>
+            <Route path="/plataforma/:id/:name" component={InternaPlataformas}/>
+            <Route path="/desenvolvedor/:id/:name" component={InternaDesenvolvedores}/>
+            <Route path="/genero/:id/:name" component={InternaGeneros}/>
             <Route path="/busca/:busca" component={Busca}/>
         </Switch>
     </BrowserRouter>

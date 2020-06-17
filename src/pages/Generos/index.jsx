@@ -27,7 +27,7 @@ export default function Generos() {
             <div className="row">
                 {genreData.results !== undefined ? (
                     genreData.results.map((item, i) => (
-                        <MiniCard key={i} data={item}/>
+                        <MiniCard key={i} page="genero" data={item}/>
                     ))
                 ) : ('')}
             </div>

@@ -17,14 +17,14 @@ export default function Plataformas() {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);
         });
-    });
+    }, []);
     return (
         <section className="col-12">
             <h2 className="text-light">Plataformas ({numericFormat(platData.count)})</h2>
             <div className="row">
                 {platData.results !== undefined ? (
                     platData.results.map((item, i) => (
-                        <MiniCard key={i} data={item}/>
+                        <MiniCard key={i} page="plataforma" data={item}/>
                     ))
                 ) : ('')}
             </div>
