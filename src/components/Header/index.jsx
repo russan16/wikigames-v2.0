@@ -34,7 +34,10 @@ export default function Header() {
     function doTheSearch() {
         if (search !== '') {
             localStorage.setItem('lastSearch', search);
-            history.push(`/busca`);
+            history.push('/busca');
+        } else {
+            alert('Digite o nome de um jogo');
+            return false;
         }
     }
 
@@ -44,7 +47,7 @@ export default function Header() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top row">
                 <Link className="navbar-brand" to="/" title="Wiki Games"><FaGamepad size={40}/></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -59,7 +62,7 @@ export default function Header() {
                             </li>
                         ))}
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
+                    <form onSubmit={(e) => {e.preventDefault()}} className="form-inline my-2 my-lg-0">
                         <input onChange={(e) => {
                             setSearch(e.target.value)
                         }} className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
