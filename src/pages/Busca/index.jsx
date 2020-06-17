@@ -3,13 +3,13 @@ import api from '../../services/api';
 import GameList from '../../components/GameList';
 import Loading from '../../components/Loading';
 
-export default function Busca(props) {
+export default function Busca() {
 
     const [busca, setBusca] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const [failed, setFailed] = useState(false);
-    const search = props.match.params.busca;
+    const search = localStorage.getItem('lastSearch');
 
     useEffect(() => {
         setIsLoading(true);

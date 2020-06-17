@@ -33,7 +33,8 @@ export default function Header() {
 
     function doTheSearch() {
         if (search !== '') {
-            history.push(`/busca/${search}`);
+            localStorage.setItem('lastSearch', search);
+            history.push(`/busca`);
         }
     }
 
@@ -58,11 +59,11 @@ export default function Header() {
                             </li>
                         ))}
                     </ul>
-                    <form onSubmit={() => doTheSearch()} className="form-inline my-2 my-lg-0">
+                    <form className="form-inline my-2 my-lg-0">
                         <input onChange={(e) => {
                             setSearch(e.target.value)
                         }} className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
-                        <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
+                        <button onClick={() => doTheSearch()} className="btn btn-outline-light my-2 my-sm-0" type="submit">
                             <FaSearch/> Buscar
                         </button>
                     </form>
