@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import {Link, useHistory} from 'react-router-dom';
 import {FaSearch, FaGamepad} from 'react-icons/fa';
 import imgHeader from '../../assets/images/header.jpg';
@@ -49,12 +51,12 @@ export default function Header() {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top row">
                 <Link className="navbar-brand" to="/" title="Wiki Games"><FaGamepad size={40}/></Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <div className="collapse navbar-collapse" id="mainMenu">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         {menu.map((item, index) => (
                             <li onClick={() => currentPage(item.url)} key={index} className={`nav-item ${btnSelected === item.url ? 'active' : ''}`}>

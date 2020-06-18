@@ -6,7 +6,7 @@ export default function MiniCard(props) {
     const data = props.data;
     const page = props.page;
     return (
-        <div className="col-lg-3 p-2 overflow-hidden">
+        <div className="col-12 col-md-4 col-lg-3 p-2 overflow-hidden">
             <Link className="rounded mini-card-wrapper border" to={`/${page}/${data.id}/${data.name}`}>
                 <figure className="custom-img-card-mini m-0">
                     <img src={data.image_background} className="img-fluid rounded-0" alt={data.name}/>

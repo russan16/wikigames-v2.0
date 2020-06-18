@@ -10,7 +10,7 @@ export default function GameList(props) {
 
     return (
         <>
-            <div className="col-6 col-lg-3 p-2">
+            <div className="col-12 col-md-6 col-lg-3 p-2">
                 <div className="card p-0 bg-light h-100">
                     <figure className="custom-img-card overflow-hidden">
                         <img className="card-img-top" src={data.background_image ? (data.background_image) : (NoImg)} alt={data.name}/>

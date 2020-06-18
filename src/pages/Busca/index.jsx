@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
+import {numericFormat} from '../../components/Conversion';
 import GameList from '../../components/GameList';
 import Loading from '../../components/Loading';
 
 export default function Busca() {
 
     const [busca, setBusca] = useState([]);
+    const [count, setCount] = useState(0);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const [failed, setFailed] = useState(false);
@@ -13,12 +15,13 @@ export default function Busca() {
 
     useEffect(() => {
         setIsLoading(true);
-        api.get(`/games?search=${search}`).then(response => {
+        api.get(`/games?search=${search}&page_size=40`).then(response => {
             setBusca(response.data.results);
+            setCount(response.data.count);
             setIsLoading(false);
             setFailed(false);
-            if (busca.length === 0)
-                setFailed(true);
+            /*if (busca.length === 0)
+                setFailed(true);*/
         }).catch(() => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);
@@ -27,20 +30,18 @@ export default function Busca() {
         document.querySelector('html,body').scrollTop = 0;
     }, [page, search]);
 
-    console.log(busca);
-
     return (
         <section className="col-12">
-            <h2 className="text-light">Resultado da busca por "<span className="text-capitalize">{search}</span>"</h2>
+            <h2 className="text-light">{count ? numericFormat(count) : 0} resultados para "<span className="text-capitalize">{search}</span>"</h2>
             <div className="row d-flex">
-                {busca.length !== 0 ? (
+                {count !== 0 ? (
                     busca.map((card, index) => (
                         <GameList key={index} games={card}/>
                     ))
-                ) : (<h4 className={`w-100 text-light text-center p-4 ${failed ? '' : 'd-none'}`}>Nenhum resultado encontrado</h4>)}
+                ) : (<h4 className="w-100 text-light text-center p-4">Nenhum resultado encontrado</h4>)}
             </div>
 
-            {!failed ? (
+            {!failed && !isLoading && count >= 200 ? (
                 <nav aria-label="Page navigation" className="mt-5 w-100">
                     <ul className="pagination justify-content-center pagination-lg">
                         <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>

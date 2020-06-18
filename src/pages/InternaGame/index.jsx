@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
+import {Link} from 'react-router-dom';
 import {dateFormat} from '../../components/Conversion';
 import Loading from '../../components/Loading';
 import noImg from '../../assets/images/no-img.jpeg';
@@ -16,6 +17,7 @@ export default function InternaGame(props) {
             setIsLoading(false);
         }).catch((error) => {
             console.log(error);
+            alert('Oops... Ocorreu um erro, tente mais tarde.');
         });
     }, []);
 
@@ -27,13 +29,21 @@ export default function InternaGame(props) {
 
             <div className="col-12">
                 <p className="text-light">
-                    <figure className="figure float-left mr-3 mb-3 w-50">
+                    <figure className="figure float-none float-md-left mr-md-3 mb-3 p-0 col-12 col-md-6">
                         <img className="img-thumbnail" src={gameInfo.background_image_additional === null ? noImg : gameInfo.background_image_additional} alt=""/>
                     </figure>
-                    <strong>Descrição:</strong> {gameInfo.description_raw === null ? ('não disponível') : (gameInfo.description_raw)}</p>
+                    {gameInfo.description_raw && (<><strong>Descrição:</strong> {gameInfo.description_raw}</>)}</p>
                 <ul className="list-unstyled">
-                    <li className="text-light">Último patch: {dateFormat(gameInfo.released)}</li>
-                    {gameInfo.website === '' ? ('') : (
+                    <li className="text-light">Nota: {gameInfo.rating || 'sem avaliação'}</li>
+                    <li className="text-light">Lançamento: {dateFormat(gameInfo.released) || 'sem data'}</li>
+                    <li className="text-light">Último patch: {dateFormat(gameInfo.updated) || 'sem atualizações'}</li>
+                    <li className="text-light">Desenvolvedor: {gameInfo.developers && gameInfo.developers.map((dev, i) => (
+                        <Link key={i} className="badge-pill badge badge-secondary mx-1" to={`/desenvolvedor/${dev.id}/${dev.name}`}>{dev.name}</Link>
+                    ))}</li>
+                    <li className="text-light">Plataforma: {gameInfo.platforms && gameInfo.platforms.map((item, i) => (
+                        <Link key={i} className="badge-pill badge badge-secondary mx-1" to={`/plataforma/${item.platform.id}/${item.platform.name}`}>{item.platform.name}</Link>
+                    ))}</li>
+                    {gameInfo.website && (
                         <li className="text-light">Site oficial: <a className="text-light" href={gameInfo.website} target="_blank">{gameInfo.website}</a></li>
                     )}
 
