@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap/js/dist/collapse';
 
 import {Link, useHistory} from 'react-router-dom';
 import {FaSearch, FaGamepad} from 'react-icons/fa';
@@ -51,8 +51,8 @@ export default function Header() {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top row">
-                <Link className="navbar-brand" to="/" title="Wiki Games">
-                    <FaGamepad size={40}/> Wiki Games
+                <Link className="navbar-brand" to="/" title="WikiGames">
+                    <FaGamepad size={40}/> WikiGames
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
                         aria-label="Toggle navigation">

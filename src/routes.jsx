@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
+import Footer from './components/Footer';
 import InternaGame from './pages/InternaGame';
 import InternaPlataformas from './pages/InternaPlataformas';
 import InternaDesenvolvedores from './pages/InternaDesenvolvedores';
@@ -25,6 +26,7 @@ const Routes = () => (
             <Route path="/genero/:id/:name" component={InternaGeneros}/>
             <Route path="/busca" component={Busca}/>
         </Switch>
+        <Footer/>
     </BrowserRouter>
 );
 
