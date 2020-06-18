@@ -9,8 +9,8 @@ export default function Generos() {
     const [genreData, setGenreData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        api.get('/genres')
+    async function getGenres() {
+        await api.get('/genres')
             .then((response) => {
                 setGenreData(response.data);
                 setIsLoading(false);
@@ -19,6 +19,10 @@ export default function Generos() {
                 alert('Oops, aconteceu um erro, tente mais tarde.');
                 setIsLoading(false);
             })
+    }
+
+    useEffect(() => {
+        getGenres();
     }, []);
 
     return (

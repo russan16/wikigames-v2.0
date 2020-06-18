@@ -21,7 +21,7 @@ export default function InternaPlataformas(props) {
             setIsLoading(false);
         });
         document.querySelector('html,body').scrollTop = 0;
-    }, [page]);
+    }, [platform, page]);
 
     return (
         <section className="col-12">

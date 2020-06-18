@@ -21,7 +21,7 @@ export default function InternaGeneros(props) {
             setIsLoading(false);
         });
         document.querySelector('html,body').scrollTop = 0;
-    }, [page]);
+    }, [genero, page]);
 
     return (
         <section className="col-12">

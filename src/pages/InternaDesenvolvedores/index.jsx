@@ -21,7 +21,7 @@ export default function InternaDesenvolvedores(props) {
             setIsLoading(false);
         });
         document.querySelector('html,body').scrollTop = 0;
-    }, [page]);
+    }, [developers,page]);
 
     return (
         <section className="col-12">

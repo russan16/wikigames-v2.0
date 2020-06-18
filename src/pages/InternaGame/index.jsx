@@ -19,7 +19,7 @@ export default function InternaGame(props) {
             console.log(error);
             alert('Oops... Ocorreu um erro, tente mais tarde.');
         });
-    }, []);
+    }, [slug]);
 
     return (
         <section className="row">

@@ -15,7 +15,7 @@ export default function Busca() {
 
     useEffect(() => {
         setIsLoading(true);
-        api.get(`/games?search=${search}&page_size=40`).then(response => {
+        api.get(`/games?search=${search}&page_size=40&page=${page}`).then(response => {
             setBusca(response.data.results);
             setCount(response.data.count);
             setIsLoading(false);

@@ -26,7 +26,7 @@ export default function Home() {
             setIsLoading(false);
         });
         document.querySelector('html,body').scrollTop = 0;
-    }, [page]);
+    }, [anoPassado, hoje, page]);
 
     return (
         <section className="col-12">
