@@ -20,7 +20,7 @@ export default function GameList(props) {
                             <h5 className="card-title mb-4">{data.name}</h5>
                             <p className="card-text">
                                 <span className="title-info"><FaBoxes/> Gênero</span>
-                                {data.genres != '' ? (
+                                {data.genres !== '' ? (
                                     data.genres.map((item, i) => (
                                         <Link key={i} to={`/genero/${item.id}/${item.name}`} className="mx-1">{item.name}</Link>
                                     ))
