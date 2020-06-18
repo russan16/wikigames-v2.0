@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import {Link, useHistory} from 'react-router-dom';
@@ -50,7 +51,9 @@ export default function Header() {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top row">
-                <Link className="navbar-brand" to="/" title="Wiki Games"><FaGamepad size={40}/></Link>
+                <Link className="navbar-brand" to="/" title="Wiki Games">
+                    <FaGamepad size={40}/> Wiki Games
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -68,7 +71,7 @@ export default function Header() {
                         <input onChange={(e) => {
                             setSearch(e.target.value)
                         }} className="form-control mr-sm-2" type="search" placeholder="Nome do jogo"/>
-                        <button onClick={() => doTheSearch()} className="btn btn-outline-light my-2 my-sm-0" type="submit">
+                        <button onClick={() => doTheSearch()} className="btn btn-outline-light my-2 my-sm-0 d-none d-md-inline-block" type="submit">
                             <FaSearch/> Buscar
                         </button>
                     </form>
