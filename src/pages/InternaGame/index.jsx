@@ -44,7 +44,7 @@ export default function InternaGame(props) {
                         <Link key={i} className="badge-pill badge badge-secondary mx-1" to={`/plataforma/${item.platform.id}/${item.platform.name}`}>{item.platform.name}</Link>
                     ))}</li>
                     {gameInfo.website && (
-                        <li className="text-light">Site oficial: <a className="text-light" href={gameInfo.website} target="_blank">{gameInfo.website}</a></li>
+                        <li className="text-light">Site oficial: <a className="text-light" href={gameInfo.website} target="_blank" rel="noopener noreferrer">{gameInfo.website}</a></li>
                     )}
 
                 </ul>
