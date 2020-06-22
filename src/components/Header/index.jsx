@@ -51,7 +51,7 @@ export default function Header() {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top row">
-                <Link className="navbar-brand" to="/" title="WikiGames">
+                <Link className="navbar-brand" to="/" title="WikiGames Home">
                     <FaGamepad size={40}/> WikiGames
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"

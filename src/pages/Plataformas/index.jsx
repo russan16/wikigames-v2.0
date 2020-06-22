@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {numericFormat} from '../../components/Conversion';
 import MiniCard from '../../components/MiniCard';
 import api from '../../services/api';
-import Loading from "../../components/Loading";
+import Loading, {adjusments} from "../../components/Loading";
 
 export default function Plataformas() {
 
@@ -13,6 +13,7 @@ export default function Plataformas() {
         api.get('/platforms').then((response) => {
             setPlatData(response.data);
             setIsLoading(false);
+            adjusments();
         }).catch((e) => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);

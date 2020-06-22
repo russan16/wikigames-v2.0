@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {numericFormat} from '../../components/Conversion';
 import MiniCard from '../../components/MiniCard';
 import api from '../../services/api';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 
 export default function Desenvolvedores() {
 
@@ -15,6 +15,7 @@ export default function Desenvolvedores() {
         api.get(`/developers?page_size=40&page=${page}`).then((response) => {
             setDevData(response.data);
             setIsLoading(false);
+            adjusments();
         }).catch(() => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);

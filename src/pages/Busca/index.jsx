@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import {numericFormat} from '../../components/Conversion';
 import GameList from '../../components/GameList';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 
 export default function Busca() {
 
@@ -20,8 +20,7 @@ export default function Busca() {
             setCount(response.data.count);
             setIsLoading(false);
             setFailed(false);
-            /*if (busca.length === 0)
-                setFailed(true);*/
+            adjusments();
         }).catch(() => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);

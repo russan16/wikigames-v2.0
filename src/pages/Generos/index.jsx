@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import MiniCard from '../../components/MiniCard';
 import './genres.scss';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 
 export default function Generos() {
 
@@ -14,6 +14,7 @@ export default function Generos() {
             .then((response) => {
                 setGenreData(response.data);
                 setIsLoading(false);
+                adjusments();
             })
             .catch(() => {
                 alert('Oops, aconteceu um erro, tente mais tarde.');

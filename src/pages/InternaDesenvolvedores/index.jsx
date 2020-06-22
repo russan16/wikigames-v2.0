@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import GameList from '../../components/GameList';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 
 export default function InternaDesenvolvedores(props) {
 
@@ -16,11 +16,11 @@ export default function InternaDesenvolvedores(props) {
         api.get(`games?developers=${developers}&page=${page}`).then(response => {
             setGames(response.data.results);
             setIsLoading(false);
+            adjusments();
         }).catch(() => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);
         });
-        document.querySelector('html,body').scrollTop = 0;
     }, [developers,page]);
 
     return (

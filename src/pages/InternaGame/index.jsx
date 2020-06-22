@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import {Link} from 'react-router-dom';
 import {dateFormat} from '../../components/Conversion';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 import noImg from '../../assets/images/no-img.jpeg';
 
 export default function InternaGame(props) {
@@ -15,6 +15,7 @@ export default function InternaGame(props) {
         api.get(`/games/${slug}`).then((response) => {
             setGameInfo(response.data);
             setIsLoading(false);
+            adjusments();
         }).catch((error) => {
             console.log(error);
             alert('Oops... Ocorreu um erro, tente mais tarde.');
@@ -42,6 +43,9 @@ export default function InternaGame(props) {
                     ))}</li>
                     <li className="text-light">Plataforma: {gameInfo.platforms && gameInfo.platforms.map((item, i) => (
                         <Link key={i} className="badge-pill badge badge-secondary mx-1" to={`/plataforma/${item.platform.id}/${item.platform.name}`}>{item.platform.name}</Link>
+                    ))}</li>
+                    <li className="text-light">Gênero: {gameInfo.genres && gameInfo.genres.map((item, i) => (
+                        <Link key={i} className="badge-pill badge badge-secondary mx-1" to={`/genero/${item.id}/${item.name}`}>{item.name}</Link>
                     ))}</li>
                     {gameInfo.website && (
                         <li className="text-light">Site oficial: <a className="text-light" href={gameInfo.website} target="_blank" rel="noopener noreferrer">{gameInfo.website}</a></li>

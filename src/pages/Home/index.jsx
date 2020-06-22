@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api';
 import GameList from '../../components/GameList';
-import Loading from '../../components/Loading';
+import Loading, {adjusments} from '../../components/Loading';
 
 export default function Home() {
 
@@ -21,11 +21,11 @@ export default function Home() {
         api.get(`games?dates=${anoPassado},${hoje}&ordering=-added&page=${page}`).then(response => {
             setGames(response.data.results);
             setIsLoading(false);
+            adjusments();
         }).catch(() => {
             alert('Oops, aconteceu um erro, tente mais tarde.');
             setIsLoading(false);
         });
-        document.querySelector('html,body').scrollTop = 0;
     }, [anoPassado, hoje, page]);
 
     return (
