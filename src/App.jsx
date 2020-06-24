@@ -3,9 +3,9 @@ import Routes from './routes';
 import './assets/css/main.scss';
 function App() {
   return (
-    <div className="App mb-5 container min-vh-100 bg-dark pb-0">
+    <main className="mb-5 container bg-dark pb-0">
       <Routes />
-    </div>
+    </main>
   );
 }
 

@@ -27,7 +27,7 @@ export default function Generos() {
     }, []);
 
     return (
-        <section className="col-12">
+        <section className="col-12 min-vh-100">
             <h2 className="text-light">Gêneros ({genreData.count})</h2>
             <div className="row">
                 {genreData.results !== undefined ? (

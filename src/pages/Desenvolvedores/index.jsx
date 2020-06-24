@@ -23,7 +23,7 @@ export default function Desenvolvedores() {
         document.querySelector('html,body').scrollTop = 0;
     }, [page]);
     return (
-        <section className="col-12">
+        <section className="col-12 min-vh-100">
             <h2 className="text-light">Desenvolvedores ({numericFormat(devData.count)})</h2>
             <div className="row">
                 {devData.results !== undefined ? (

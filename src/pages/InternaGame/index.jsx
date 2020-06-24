@@ -23,7 +23,7 @@ export default function InternaGame(props) {
     }, [slug]);
 
     return (
-        <section className="row">
+        <section className="row min-vh-100">
             <div className="col-12">
                 <h1 className="text-light text-center">{gameInfo.name}</h1>
             </div>

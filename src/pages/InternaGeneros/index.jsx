@@ -24,7 +24,7 @@ export default function InternaGeneros(props) {
     }, [genero, page]);
 
     return (
-        <section className="col-12">
+        <section className="col-12 min-vh-100">
             <h2 className="text-light">Gênero: {genreName}</h2>
             <div className="row d-flex">
                 {games.map((card, index) => (

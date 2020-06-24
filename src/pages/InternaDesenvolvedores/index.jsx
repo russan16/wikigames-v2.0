@@ -24,7 +24,7 @@ export default function InternaDesenvolvedores(props) {
     }, [developers,page]);
 
     return (
-        <section className="col-12">
+        <section className="col-12 min-vh-100">
             <h2 className="text-light">Desenvolvedor: {devName}</h2>
             <div className="row d-flex">
                 {games.map((card, index) => (

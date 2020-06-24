@@ -30,7 +30,7 @@ export default function Busca() {
     }, [page, search]);
 
     return (
-        <section className="col-12">
+        <section className="col-12 min-vh-100">
             <h2 className="text-light">{count ? numericFormat(count) : 0} resultados para "<span className="text-capitalize">{search}</span>"</h2>
             <div className="row d-flex">
                 {count !== 0 ? (
